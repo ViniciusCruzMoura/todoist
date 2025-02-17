@@ -1,0 +1,110 @@
+
+* Simple task for beginners
+On contract termination module, reduce the SGR API timeout.
+    grep --color=auto -rn --include=*.{py,} -s -e "timeout=45"
+
+* Wishlist items
+On the cardconnect, remove the environment variable not used in the 'docker-compose.yml'
+and 'settings.py'. Run the following command to get the list of environment variable.
+    echo "$PWD/core/settings.py:"
+    for line in $(cat .env.example); do
+        grep -n "${line//=/\',}" core/settings.py
+    done
+    echo "$PWD/docker-compose.yml:"
+    for line in $(cat .env.example); do
+         grep -n "${line//=/}" docker-compose.yml
+    done
+Then delete the unused variable and test the apis inside the docker container.
+    docker build --network=host -t $(basename $PWD) .
+    docker run -it --rm --network=host --env-file .env --name $(basename $PWD) \
+        -v "$PWD":/"$(basename $PWD)" -w /"$(basename $PWD)" $(basename $PWD) bash
+Fix these uses by change environment variable values.
+
+* Small but important fixes needed in existing features
+On contract termination module, the 'observacao' field isn't return the flag information
+when allowed the 'baixa_tecnica' or 'encerra_operacaor'. Run the 
+following command to get the function definition location.
+    grep --color=auto -rn --include=*.{py,} -s -e "def _rescisao_buscar_dados_para_o_retorno(.*):"
+Then look up this file and function.
+    apps/terminal_android/modules/rescisao.py
+    _rescisao_buscar_dados_para_o_retorno()
+Fix these uses by change the way of assign the variable value.
+
+* Simple task for beginners
+On the cardterminais, change the microservice system failure message from status code 500. Run the 
+following command to get a list of funtion return.
+    grep --color=auto -rn --include=*.{py,} -s -e "Ops... Sistema em Manutenção, Tente Novamente Mais Tarde."
+Then change the string to this one:
+    "Ops... Parece que algo deu errado!, Tente Novamente Mais Tarde."
+Fix these uses by change the text would help the end user.
+
+* Wishlist items
+On contract termination module, extract to small functions the logic of allowing
+'baixa_tecnica' and 'encerra_operacao', extract the the unlink flow to a small 
+function, and extract the logic of observation text inside response.
+Look up this file.
+    apps/terminal_android/modules/rescisao.py
+Then look up this function.
+    _rescisao_abrir_protocolo()
+    _rescisao_buscar_dados_para_o_retorno()
+Fix these uses by writing small wrapper functions.
+
+* Frozen to analyze the solution
+On shipment module, if the client id company is different from POS id company,
+so change the id company of POS
+- create a query and a update sql
+- build a function for ship the POS to company
+- deploy function on prod container and 
+    - execute inside the docker container to test the update sql
+
+* Important features
+On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
+    make a monitoring task that check every day as 6 o'clock if there a d-1 register on the table
+    use the same structer already created on the tasks package
+
+* Wishlist items
+On the cardterminais, refactoring code of generated protocol in response,
+    before the request ending for client without wkf, extract to small function
+
+* Important features
+On contract termination module, deallocate the 'cardmais' and 'linux' when the client
+have both and the contract termination is to finish the client operation.
+
+* Wishlist items
+On contract termination module, don't close the protocol when is not allowed the 'permite_baixa_tecnica' and
+    'permite_encerra_operacao'
+
+On cardterminais, change the 'terminal/linux/rescindir' endpoint to 'cliente/terminal/rescindir'
+On contract termination, cancel the protocol with service order error
+On contract termination, change the '{0}' error to 'Erro não catalogado.'
+SP3 migration, create a portainer volume and deploy the portainer, setting the auth and the cardway logo,
+    make a directory on jdedv home called workspace, to storage the docker composes files,
+    create the dozzel master and slave compose, a deploy the dozzle, and check if the
+        port 9009 is blocked by the firewall, otherwise call the vismar or juliano,
+    check the port 50000, 8080, 8000, 80, 9000 to 9015,
+    check the oracle connection, sgr external dns and integrati internal dns
+SP3 migration, check how to use the jenkins without docker layer, 
+    create the jenkins compose to deploy, 
+    make a diretory inside the workspace to stored the environment variables of the apps,
+    set credetials inside the jenkins, set pipeline
+
+###
+###    v25.02
+###
+On shipment module, before open a protocol check if the type is 'FINALIZAR_OPERACAO', 
+    if it's, so deallocate and open the protocol and add the protocol inside response
+
+On terminal maintenance, when the api return timeout, get the protocol on database
+
+On the cardterminais, change the finalizar_protocolo_no_sgr function 
+    to use the cardcredenciamento instead camunda api
+
+On contract termination module, when the client is allowed to 'permite_baixa_tecnica' e 'permite_encerra_operacao', so
+    executre the unlink, otherwise activate those flags inside the SGV
+
+On contract termination module, return the information of 'permite_baixa_tecnica' e 'permite_encerra_operacao' inside
+    the 'protocolo_info'
+
+On contract termination module, add the generated protocol in response, before the request ending for client without wkf,
+    finish the protocol after unlink for client without wkf, 
+
