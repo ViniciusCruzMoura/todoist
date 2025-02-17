@@ -1,5 +1,27 @@
 
 * Simple task for beginners
+On the cardcredenciamento, extract 'fases' function to a separate file. Run the 
+following command to get the list of functions.
+    grep -n "def.*fases.*(.*):" apps/recarga/modules/funcoes.py
+Then run each function with django shell and check the behavior.
+    python manage.py shell << EOF
+    from apps.recarga.modules.funcoes import *
+    print( buscar_fases_do_credenciamento("995.845.570-68", "034.576.540-00") )
+    print( buscar_fases_do_credenciamento_por_cliente("995.845.570-68") )
+    EOF
+Refactor these uses by moving to a new modules file and change the imports in all source code.
+
+* Simple task for beginners
+On the cardcredenciamento, extract functions about 'serasa', 'receita' and 'sefaz' to a own file. 
+Run the following command to get the list of functions.
+    grep -n -e "def.*receita" -e "def.*sefaz" -e "def.*serasa" apps/recarga/modules/funcoes.py
+
+* Simple task for beginners
+On the cardcredenciamento, avoid nested ifs of 'estabelecimentos_info' variable. Run the 
+following command to get the list of functions.
+    grep -rn --include=*.py "def buscar_cliente_id(.*):"
+
+* Simple task for beginners
 On contract termination module, reduce the SGR API timeout.
     grep --color=auto -rn --include=*.{py,} -s -e "timeout=45"
 
