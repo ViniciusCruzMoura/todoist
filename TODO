@@ -1,4 +1,22 @@
 
+* Important features
+On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
+    make a monitoring task that check every day as 6 o'clock if there a d-1 register on the table
+    use the same structer already created on the tasks package
+
+On contract termination module, deallocate the 'cardmais' and 'linux' when the client
+have both and the contract termination is to finish the client operation.
+
+* Small but important fixes needed in existing features
+On contract termination module, the 'observacao' field isn't return the flag information
+when allowed the 'baixa_tecnica' or 'encerra_operacaor'. Run the 
+following command to get the function definition location.
+    grep --color=auto -rn --include=*.{py,} -s -e "def _rescisao_buscar_dados_para_o_retorno(.*):"
+Then look up this file and function.
+    apps/terminal_android/modules/rescisao.py
+    _rescisao_buscar_dados_para_o_retorno()
+Fix these uses by change the way of assign the variable value.
+
 * Simple task for beginners
 On the cardcredenciamento, extract 'fases' function to a separate file. Run the 
 following command to get the list of functions.
@@ -6,24 +24,34 @@ following command to get the list of functions.
 Then run each function with django shell and check the behavior.
     python manage.py shell << EOF
     from apps.recarga.modules.funcoes import *
-    print( buscar_fases_do_credenciamento("995.845.570-68", "034.576.540-00") )
-    print( buscar_fases_do_credenciamento_por_cliente("995.845.570-68") )
+    print( buscar_fases_do_credenciamento("99584557068", "03457654000") )
+    print( buscar_fases_do_credenciamento_por_cliente("99584557068") )
     EOF
 Refactor these uses by moving to a new modules file and change the imports in all source code.
 
-* Simple task for beginners
 On the cardcredenciamento, extract functions about 'serasa', 'receita' and 'sefaz' to a own file. 
 Run the following command to get the list of functions.
     grep -n -e "def.*receita" -e "def.*sefaz" -e "def.*serasa" apps/recarga/modules/funcoes.py
+Then run each function with django shell and check the behavior.
+    python manage.py shell << EOF
+    from apps.recarga.modules.funcoes import *
+    print( pegar_data_constituicao_receita("97441216000124") )
+    EOF
+Refactor these uses by moving to a new modules file and change the imports in all source code.
 
-* Simple task for beginners
 On the cardcredenciamento, avoid nested ifs of 'estabelecimentos_info' variable. Run the 
 following command to get the list of functions.
     grep -rn --include=*.py "def buscar_cliente_id(.*):"
 
-* Simple task for beginners
 On contract termination module, reduce the SGR API timeout.
     grep --color=auto -rn --include=*.{py,} -s -e "timeout=45"
+
+On the cardterminais, change the microservice system failure message from status code 500. Run the 
+following command to get a list of funtion return.
+    grep --color=auto -rn --include=*.{py,} -s -e "Ops... Sistema em Manutenção, Tente Novamente Mais Tarde."
+Then change the string to this one:
+    "Ops... Parece que algo deu errado!, Tente Novamente Mais Tarde."
+Fix these uses by change the text would help the end user.
 
 * Wishlist items
 On the cardconnect, remove the environment variable not used in the 'docker-compose.yml'
@@ -42,25 +70,6 @@ Then delete the unused variable and test the apis inside the docker container.
         -v "$PWD":/"$(basename $PWD)" -w /"$(basename $PWD)" $(basename $PWD) bash
 Fix these uses by change environment variable values.
 
-* Small but important fixes needed in existing features
-On contract termination module, the 'observacao' field isn't return the flag information
-when allowed the 'baixa_tecnica' or 'encerra_operacaor'. Run the 
-following command to get the function definition location.
-    grep --color=auto -rn --include=*.{py,} -s -e "def _rescisao_buscar_dados_para_o_retorno(.*):"
-Then look up this file and function.
-    apps/terminal_android/modules/rescisao.py
-    _rescisao_buscar_dados_para_o_retorno()
-Fix these uses by change the way of assign the variable value.
-
-* Simple task for beginners
-On the cardterminais, change the microservice system failure message from status code 500. Run the 
-following command to get a list of funtion return.
-    grep --color=auto -rn --include=*.{py,} -s -e "Ops... Sistema em Manutenção, Tente Novamente Mais Tarde."
-Then change the string to this one:
-    "Ops... Parece que algo deu errado!, Tente Novamente Mais Tarde."
-Fix these uses by change the text would help the end user.
-
-* Wishlist items
 On contract termination module, extract to small functions the logic of allowing
 'baixa_tecnica' and 'encerra_operacao', extract the the unlink flow to a small 
 function, and extract the logic of observation text inside response.
@@ -71,6 +80,12 @@ Then look up this function.
     _rescisao_buscar_dados_para_o_retorno()
 Fix these uses by writing small wrapper functions.
 
+On the cardterminais, refactoring code of generated protocol in response,
+    before the request ending for client without wkf, extract to small function
+
+On contract termination module, don't close the protocol when is not allowed the 'permite_baixa_tecnica' and
+    'permite_encerra_operacao'
+
 * Frozen to analyze the solution
 On shipment module, if the client id company is different from POS id company,
 so change the id company of POS
@@ -78,23 +93,6 @@ so change the id company of POS
 - build a function for ship the POS to company
 - deploy function on prod container and 
     - execute inside the docker container to test the update sql
-
-* Important features
-On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
-    make a monitoring task that check every day as 6 o'clock if there a d-1 register on the table
-    use the same structer already created on the tasks package
-
-* Wishlist items
-On the cardterminais, refactoring code of generated protocol in response,
-    before the request ending for client without wkf, extract to small function
-
-* Important features
-On contract termination module, deallocate the 'cardmais' and 'linux' when the client
-have both and the contract termination is to finish the client operation.
-
-* Wishlist items
-On contract termination module, don't close the protocol when is not allowed the 'permite_baixa_tecnica' and
-    'permite_encerra_operacao'
 
 On cardterminais, change the 'terminal/linux/rescindir' endpoint to 'cliente/terminal/rescindir'
 On contract termination, cancel the protocol with service order error
