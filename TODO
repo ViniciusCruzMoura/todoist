@@ -18,6 +18,11 @@ Then look up this file and function.
 Fix these uses by change the way of assign the variable value.
 
 * Simple task for beginners
+On the cardterminais, extract the send email logic from view. Run the
+following command to find where need change.
+    grep -n "enviar_comprovante_de_aceite_via_email(.*" apps/terminal_android/views/remessa.py
+Refactor these implementations.
+
 On the cardcredenciamento, extract 'fases' function to a separate file. Run the 
 following command to get the list of functions.
     grep -n "def.*fases.*(.*):" apps/recarga/modules/funcoes.py
