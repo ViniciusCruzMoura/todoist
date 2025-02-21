@@ -121,19 +121,18 @@ SP3 migration, check how to use the jenkins without docker layer,
 ###    v25.02
 ###
 On shipment module, before open a protocol check if the type is 'FINALIZAR_OPERACAO', 
-    if it's, so deallocate and open the protocol and add the protocol inside response
+if it's, so deallocate and open the protocol and add the protocol inside response
 
 On terminal maintenance, when the api return timeout, get the protocol on database
 
-On the cardterminais, change the finalizar_protocolo_no_sgr function 
-    to use the cardcredenciamento instead camunda api
+On the cardterminais, change the finalizar_protocolo_no_sgr function to use the cardcredenciamento instead camunda api
 
 On contract termination module, when the client is allowed to 'permite_baixa_tecnica' e 'permite_encerra_operacao', so
-    executre the unlink, otherwise activate those flags inside the SGV
+executre the unlink, otherwise activate those flags inside the SGV
 
 On contract termination module, return the information of 'permite_baixa_tecnica' e 'permite_encerra_operacao' inside
-    the 'protocolo_info'
+the 'protocolo_info'
 
 On contract termination module, add the generated protocol in response, before the request ending for client without wkf,
-    finish the protocol after unlink for client without wkf, 
+finish the protocol after unlink for client without wkf, 
 
