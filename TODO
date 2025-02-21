@@ -1,4 +1,8 @@
 
+Seek how to get all the zendesk tickets in the status 'Aguardando Consultor' from 2022 'til now
+and close them. maybe there's something useful inside the cardconnect project, do a grep for
+the 'historico' pattern and look inside the functions.
+
 * Important features
 On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
     make a monitoring task that check every day as 6 o'clock if there a d-1 register on the table
