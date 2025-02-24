@@ -52,9 +52,6 @@ On the cardcredenciamento, avoid nested ifs of 'estabelecimentos_info' variable.
 following command to get the list of functions.
     grep -rn --include=*.py "def buscar_cliente_id(.*):"
 
-On contract termination module, reduce the SGR API timeout.
-    grep --color=auto -rn --include=*.{py,} -s -e "timeout=45"
-
 On the cardterminais, change the microservice system failure message from status code 500. Run the 
 following command to get a list of funtion return.
     grep --color=auto -rn --include=*.{py,} -s -e "Ops... Sistema em Manutenção, Tente Novamente Mais Tarde."
@@ -117,9 +114,7 @@ SP3 migration, check how to use the jenkins without docker layer,
     make a diretory inside the workspace to stored the environment variables of the apps,
     set credetials inside the jenkins, set pipeline
 
-###
 ###    v25.02
-###
 On shipment module, before open a protocol check if the type is 'FINALIZAR_OPERACAO', 
 if it's, so deallocate and open the protocol and add the protocol inside response
 
@@ -136,3 +131,5 @@ the 'protocolo_info'
 On contract termination module, add the generated protocol in response, before the request ending for client without wkf,
 finish the protocol after unlink for client without wkf, 
 
+On contract termination module, reduce the SGR API timeout.
+    grep --color=auto -rn --include=*.{py,} -s -e "timeout=45"
