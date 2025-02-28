@@ -12,14 +12,20 @@ On contract termination module, deallocate the 'cardmais' and 'linux' when the c
 have both and the contract termination is to finish the client operation.
 
 * Small but important fixes needed in existing features
-On contract termination module, the 'observacao' field isn't return the flag information
-when allowed the 'baixa_tecnica' or 'encerra_operacaor'. Run the 
-following command to get the function definition location.
-    grep --color=auto -rn --include=*.{py,} -s -e "def _rescisao_buscar_dados_para_o_retorno(.*):"
-Then look up this file and function.
-    apps/terminal_android/modules/rescisao.py
-    _rescisao_buscar_dados_para_o_retorno()
-Fix these uses by change the way of assign the variable value.
+On the cardterminais, exception in production environment.
+[2025-02-27 16:39:00 -0400] [15] [DEBUG] GET /card_terminais/api/v1/workfinity/os/abrir
+Traceback (most recent call last):
+  File "/usr/src/apps/terminal_android/views/ordem_avulsa.py", line 43, in abrir_ordem_de_servico_avulsa
+    detalhe = ordem_avulsa_abrir(cliente.get('id'),
+  File "/usr/src/apps/terminal_android/modules/ordem_avulsa.py", line 83, in ordem_avulsa_abrir
+    protocolo = registrar_em_um_protocolo(pdv, empresa, ordem_servico)
+  File "/usr/src/apps/terminal_android/modules/ordem_avulsa.py", line 63, in registrar_em_um_protocolo
+    finalizar_protocolo_no_sgr(protocolo.get('detalhe')['solicitacao']['chamado']['protocolo'])
+'NoneType' object is not subscriptable
+TypeError: 'NoneType' object is not subscriptable
+192.168.16.3 - - [27/Feb/2025:16:39:13 -0400] "
+GET /card_terminais/api/v1/workfinity/os/abrir?eeid=1270580&tipo=Credenciamento+novo&motivo=instala%C3%A7%C3%A3o+de+uma+pos+adicional+
+HTTP/1.0" 500 86 "-" "python-requests/2.32.3"
 
 * Simple task for beginners
 On the cardterminais, extract the send email logic from view. Run the
@@ -76,21 +82,8 @@ Then delete the unused variable and test the apis inside the docker container.
         -v "$PWD":/"$(basename $PWD)" -w /"$(basename $PWD)" $(basename $PWD) bash
 Fix these uses by change environment variable values.
 
-On contract termination module, extract to small functions the logic of allowing
-'baixa_tecnica' and 'encerra_operacao', extract the the unlink flow to a small 
-function, and extract the logic of observation text inside response.
-Look up this file.
-    apps/terminal_android/modules/rescisao.py
-Then look up this function.
-    _rescisao_abrir_protocolo()
-    _rescisao_buscar_dados_para_o_retorno()
-Fix these uses by writing small wrapper functions.
-
 On the cardterminais, refactoring code of generated protocol in response,
     before the request ending for client without wkf, extract to small function
-
-On contract termination module, don't close the protocol when is not allowed the 'permite_baixa_tecnica' and
-    'permite_encerra_operacao'
 
 * Frozen to analyze the solution
 On shipment module, if the client id company is different from POS id company,
@@ -101,7 +94,6 @@ so change the id company of POS
     - execute inside the docker container to test the update sql
 
 On cardterminais, change the 'terminal/linux/rescindir' endpoint to 'cliente/terminal/rescindir'
-On contract termination, cancel the protocol with service order error
 On contract termination, change the '{0}' error to 'Erro não catalogado.'
 SP3 migration, create a portainer volume and deploy the portainer, setting the auth and the cardway logo,
     make a directory on jdedv home called workspace, to storage the docker composes files,
@@ -133,3 +125,27 @@ finish the protocol after unlink for client without wkf,
 
 On contract termination module, reduce the SGR API timeout.
     grep --color=auto -rn --include=*.{py,} -s -e "timeout=45"
+
+On contract termination module, the 'observacao' field isn't return the flag information
+when allowed the 'baixa_tecnica' or 'encerra_operacaor'. Run the 
+following command to get the function definition location.
+    grep --color=auto -rn --include=*.{py,} -s -e "def _rescisao_buscar_dados_para_o_retorno(.*):"
+Then look up this file and function.
+    apps/terminal_android/modules/rescisao.py
+    _rescisao_buscar_dados_para_o_retorno()
+Fix these uses by change the way of assign the variable value.
+
+On contract termination module, extract to small functions the logic of allowing
+'baixa_tecnica' and 'encerra_operacao', extract the the unlink flow to a small 
+function, and extract the logic of observation text inside response.
+Look up this file.
+    apps/terminal_android/modules/rescisao.py
+Then look up this function.
+    _rescisao_abrir_protocolo()
+    _rescisao_buscar_dados_para_o_retorno()
+Fix these uses by writing small wrapper functions.
+
+On contract termination module, don't close the protocol when is not allowed the 'permite_baixa_tecnica' and
+    'permite_encerra_operacao'
+
+On contract termination, cancel the protocol with service order error
