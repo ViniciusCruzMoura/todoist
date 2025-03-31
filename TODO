@@ -1,5 +1,7 @@
 
-Migrate the crednet of serasa experian to API v2
+Migrate the crednet of serasa experian to API v2, validate the cpf and cpnj lenght
+
+SGR, migrate the crednet service implementation to v2
 
 Migrate to sp3 server
 SP3 migration, create a portainer volume and deploy the portainer, setting the auth and the cardway logo,
@@ -15,9 +17,6 @@ SP3 migration, check how to use the jenkins without docker layer,
     set credetials inside the jenkins, set pipeline
 SP3 migration, botpress v12
 
-On the cardterminais, On contract termination module, timeout +200s why? maybe a SGR problem
-
-* Important features
 On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
     make a monitoring task that check every day as 6 o'clock if there a d-1 register on the table
     use the same structer already created on the tasks package
@@ -25,7 +24,6 @@ On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SG
 On contract termination module, deallocate the 'cardmais' and 'linux' when the client
 have both and the contract termination is to finish the client operation.
 
-* Small but important fixes needed in existing features
 On the cardterminais, exception in production environment.
 [2025-02-27 16:39:00 -0400] [15] [DEBUG] GET /card_terminais/api/v1/workfinity/os/abrir
 Traceback (most recent call last):
@@ -41,7 +39,6 @@ TypeError: 'NoneType' object is not subscriptable
 GET /card_terminais/api/v1/workfinity/os/abrir?eeid=1270580&tipo=Credenciamento+novo&motivo=instala%C3%A7%C3%A3o+de+uma+pos+adicional+
 HTTP/1.0" 500 86 "-" "python-requests/2.32.3"
 
-* Simple task for beginners
 On the cardterminais, extract the send email logic from view. Run the
 following command to find where need change.
     grep -n "enviar_comprovante_de_aceite_via_email(.*" apps/terminal_android/views/remessa.py
@@ -79,7 +76,6 @@ Then change the string to this one:
     "Ops... Parece que algo deu errado!, Tente Novamente Mais Tarde."
 Fix these uses by change the text would help the end user.
 
-* Wishlist items
 On the cardconnect, remove the environment variable not used in the 'docker-compose.yml'
 and 'settings.py'. Run the following command to get the list of environment variable.
     echo "$PWD/core/settings.py:"
