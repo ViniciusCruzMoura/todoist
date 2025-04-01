@@ -1,6 +1,4 @@
 
-Migrate the crednet of serasa experian to API v2, validate the cpf and cpnj lenght
-
 SGR, migrate the crednet service implementation to v2
 
 Migrate to sp3 server
