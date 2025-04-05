@@ -19,9 +19,6 @@ On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SG
     make a monitoring task that check every day as 6 o'clock if there a d-1 register on the table
     use the same structer already created on the tasks package
 
-On contract termination module, deallocate the 'cardmais' and 'linux' when the client
-have both and the contract termination is to finish the client operation.
-
 On the cardterminais, exception in production environment.
 [2025-02-27 16:39:00 -0400] [15] [DEBUG] GET /card_terminais/api/v1/workfinity/os/abrir
 Traceback (most recent call last):
@@ -66,13 +63,6 @@ Refactor these uses by moving to a new modules file and change the imports in al
 On the cardcredenciamento, avoid nested ifs of 'estabelecimentos_info' variable. Run the 
 following command to get the list of functions.
     grep -rn --include=*.py "def buscar_cliente_id(.*):"
-
-On the cardterminais, change the microservice system failure message from status code 500. Run the 
-following command to get a list of funtion return.
-    grep --color=auto -rn --include=*.{py,} -s -e "Ops... Sistema em Manutenção, Tente Novamente Mais Tarde."
-Then change the string to this one:
-    "Ops... Parece que algo deu errado!, Tente Novamente Mais Tarde."
-Fix these uses by change the text would help the end user.
 
 On the cardconnect, remove the environment variable not used in the 'docker-compose.yml'
 and 'settings.py'. Run the following command to get the list of environment variable.
