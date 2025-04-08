@@ -1,6 +1,4 @@
 
-SGR, migrate the crednet service implementation to v2
-
 Migrate to sp3 server
 SP3 migration, create a portainer volume and deploy the portainer, setting the auth and the cardway logo,
     make a directory on jdedv home called workspace, to storage the docker composes files,
