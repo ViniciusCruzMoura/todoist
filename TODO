@@ -1,18 +1,4 @@
 
-update cardsefaz health check
-
-Migrate to sp3 server
-SP3 migration, create a portainer volume and deploy the portainer, setting the auth and the cardway logo,
-    make a directory on jdedv home called workspace, to storage the docker composes files,
-    create the dozzel master and slave compose, a deploy the dozzle, and check if the
-        port 9009 is blocked by the firewall, otherwise call the vismar or juliano,
-    check the port 50000, 8080, 8000, 80, 9000 to 9015,
-    check the oracle connection, sgr external dns and integrati internal dns
-    check the jde, complience and ftp connections
-SP3 migration, check how to use the jenkins without docker layer, 
-    create the jenkins compose to deploy, 
-    make a diretory inside the workspace to stored the environment variables of the apps,
-    set credetials inside the jenkins, set pipeline
 SP3 migration, botpress v12
 
 On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
