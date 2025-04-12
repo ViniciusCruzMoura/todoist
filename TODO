@@ -1,4 +1,12 @@
 
+On the cardcredenciamento, remove the type 'NOVO' and add the new types 'SUBADQ' and 'RECARGA'
+
+On the cardcredenciamento, always wait the SGR return the SGVID, and avoid the timeout
+
+On the cardcredenciamento, when a protocol create a SGVID then send a whatsapp notification to conversationid
+
+On the cardcredenciamento, improve the CPF extraction from CNPJ for MEI and ME clients
+
 SP3 migration, botpress v12
 
 On the cardterminais, build a function that insert errors in 'ADM_SGV_JDE.LOG_SGV_ERR' table
