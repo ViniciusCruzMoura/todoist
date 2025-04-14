@@ -28,6 +28,9 @@ TypeError: 'NoneType' object is not subscriptable
 GET /card_terminais/api/v1/workfinity/os/abrir?eeid=1270580&tipo=Credenciamento+novo&motivo=instala%C3%A7%C3%A3o+de+uma+pos+adicional+
 HTTP/1.0" 500 86 "-" "python-requests/2.32.3"
 
+On the cardterminais, remove the email "vinicius.moura@cardway.com.br".
+    grep -n "vinicius.moura@cardway.com.br" apps/terminal_android/views/remessa.py
+
 On the cardterminais, extract the send email logic from view. Run the
 following command to find where need change.
     grep -n "enviar_comprovante_de_aceite_via_email(.*" apps/terminal_android/views/remessa.py
