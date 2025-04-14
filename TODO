@@ -34,6 +34,15 @@ And run the unit tests with docker.
     &8 docker rmi cardcredenciamento:test --force
 Refactor these uses by moving to a new modules file and change the imports in all source code.
 
+On cardconnect, exception in production environment.
+    Internal Server Error: /chatonline/48455553de6a453b7677fadc/
+    Traceback (most recent call last):
+      File "/usr/local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+        response = get_response(request)
+      File "/sistemas/apps/botpresscore/views.py", line 313, in detail_chat_aovivo
+        api_response_msg = api_instance_msg.list_messages(app_id, appuserid)
+    AttributeError: module 'sunshine_conversations_client.model' has no attribute 'dict'
+
 On the cardcredenciamento, remove the type 'NOVO' and add the new types 'SUBADQ' and 'RECARGA'
 
 On the cardcredenciamento, check if the application always wait the SGR return the SGVID
