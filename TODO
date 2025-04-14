@@ -1,5 +1,8 @@
 
-How to notificate the seller on whatsapp when the SGVID has been generated?
+How to notify the seller on WhatsApp when the SGVID is generated?
+Perhaps by creating a webhook where the SGR makes calls when the SGV phase is completed,
+and just passing the protocol or CPF/CNPJ, something like that.
+Looks inside the SgvWs class or BotService class.
 
 How to make a AABB collision and collision resolution?
 
