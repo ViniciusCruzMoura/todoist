@@ -1,9 +1,12 @@
 
-How to make a AABB collision and collision resolution
+How to notificate the seller on whatsapp when the SGVID was generated?
+
+How to make a AABB collision and collision resolution?
 
 On the cardcredenciamento, remove the type 'NOVO' and add the new types 'SUBADQ' and 'RECARGA'
 
-On the cardcredenciamento, always wait the SGR return the SGVID, and avoid the timeout
+On the cardcredenciamento, check if the application always wait the SGR return the SGVID
+when it's automatic flow, the user is complaining he does not.
 
 On the cardcredenciamento, when a protocol create a SGVID then send a whatsapp notification to conversationid
 
