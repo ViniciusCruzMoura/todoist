@@ -1,4 +1,6 @@
 
+How to make a AABB collision and collision resolution
+
 On the cardcredenciamento, remove the type 'NOVO' and add the new types 'SUBADQ' and 'RECARGA'
 
 On the cardcredenciamento, always wait the SGR return the SGVID, and avoid the timeout
