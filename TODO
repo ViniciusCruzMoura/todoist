@@ -1,8 +1,12 @@
 
-How to notify the seller on WhatsApp when the SGVID is generated?
-Perhaps by creating a webhook where the SGR makes calls when the SGV phase is completed,
-and just passing the protocol or CPF/CNPJ, something like that.
-Looks inside the SgvWs class or BotService class.
+The idea is, 
+If the protocol is "mesa de analise", when registering the client in the SGV and generating the ID, 
+then the Consultant must be proactively notified via Cardoso, with the protocol number and the generated SGVID.
+The Question is, how to notify the seller via WhatsApp when the SGVID is generated?
+Perhaps by creating a webhook where the SGR makes calls when the SGV phase is completed, passing only the protocol
+or CPF/CNPJ, something like that.
+Explore the implementation within the SgvWs class or the SGR's BotService class to inject a call to the webhook
+when the protocol enters the "Aguardando Consultor" phase.
 
 How to make a AABB collision and collision resolution?
 
