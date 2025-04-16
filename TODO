@@ -1,4 +1,8 @@
 
+Nova ocerização no cardcredenciamento, configurar a aplicação para suportar os certificados cardmais.
+O endpoint do cardmais exige certifica, token e outros requisitos, então será necessario
+preparar o CardCredenciamento para funcionar o consumo dos serviços no servidor.
+
 The idea is, 
 If the protocol is "mesa de analise", when registering the client in the SGV and generating the ID, 
 then the Consultant must be proactively notified via Cardoso, with the protocol number and the generated SGVID.
