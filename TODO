@@ -12,6 +12,7 @@ Perhaps by creating a webhook where the SGR makes calls when the SGV phase is co
 or CPF/CNPJ, something like that.
 Explore the implementation within the SgvWs class or the SGR's BotService class to inject a call to the webhook
 when the protocol enters the "Aguardando Consultor" phase.
+Idea, perhaps make a procedure inside ADM_SGV to consume the webhook, then make a trigger that call the procedure
 
 How to make a AABB collision and collision resolution?
 
