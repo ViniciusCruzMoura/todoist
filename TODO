@@ -1,8 +1,11 @@
 
-Nova ocerização no cardcredenciamento, configurar a aplicação para suportar os certificados cardmais.
-O endpoint do cardmais exige certifica, token e outros requisitos, então será necessario
-preparar o CardCredenciamento para funcionar o consumo dos serviços no servidor.
-apps documentos, gerar_token, consultar_cardmais, imagem_para_base64.
+CardCredenciamento, issue validating whether there is a customer at the same address. The query is wrong,
+you shouldn't use the neighborhood and street IDs as clauses, because they are unique for each address.
+It's better to filter by name.
+
+New certification in CardCredenciamento. Configure the application to support the CardMais certificates.
+The CardMais endpoint requires a certificate, token, and other requirements, so it will be necessary
+to prepare CardCredenciamento to function for consuming services on the server.
 
 The idea is, 
 If the protocol is "mesa de analise", when registering the client in the SGV and generating the ID, 
