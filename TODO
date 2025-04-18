@@ -1,4 +1,7 @@
 
+How to implement AABB collision and collision resolution?
+What is the difference compared to Swept AABB and other 2D collisions?
+
 CardCredenciamento, issue validating whether there is a customer at the same address. The query is wrong,
 you shouldn't use the neighborhood and street IDs as clauses, because they are unique for each address.
 It's better to filter by name.
@@ -16,8 +19,6 @@ or CPF/CNPJ, something like that.
 Explore the implementation within the SgvWs class or the SGR's BotService class to inject a call to the webhook
 when the protocol enters the "Aguardando Consultor" phase.
 Idea, perhaps make a procedure inside ADM_SGV to consume the webhook, then make a trigger that call the procedure
-
-How to make a AABB collision and collision resolution?
 
 On the cardcredenciamento, extract 'fases' function to a separate file 'chatbot.py'. Run the 
 following command to get the list of functions.
@@ -60,9 +61,6 @@ On cardconnect, exception in production environment.
     AttributeError: module 'sunshine_conversations_client.model' has no attribute 'dict'
 
 On the cardcredenciamento, remove the type 'NOVO' and add the new types 'SUBADQ' and 'RECARGA'
-
-On the cardcredenciamento, check if the application always wait the SGR return the SGVID
-when it's automatic flow, the user is complaining he does not.
 
 On the cardcredenciamento, when a protocol create a SGVID then send a whatsapp notification to conversationid
 
@@ -116,7 +114,4 @@ Then delete the unused variable and test the apis inside the docker container.
     docker run -it --rm --network=host --env-file .env --name $(basename $PWD) \
         -v "$PWD":/"$(basename $PWD)" -w /"$(basename $PWD)" $(basename $PWD) bash
 Fix these uses by change environment variable values.
-
-On the cardterminais, refactoring code of generated protocol in response,
-    before the request ending for client without wkf, extract to small function
 
