@@ -1,6 +1,14 @@
 
+To agenda calculus test, science computer, 'til 02/05
+
+To agenda legislation test, science computer, 'til 02/05
+
+Deploy and explore a localhost gitea solution, create a docker compose, and know how to backup and recover volumes
+
 How to implement AABB collision and collision resolution?
 What is the difference compared to Swept AABB and other 2D collisions?
+We have two rectangles, for each we must check for overlap on the X-Axis and the Y-Axis
+    A.min < B.max && B.min < A.max
 
 CardCredenciamento, issue validating whether there is a customer at the same address. The query is wrong,
 you shouldn't use the neighborhood and street IDs as clauses, because they are unique for each address.
