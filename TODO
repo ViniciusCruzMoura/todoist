@@ -1,4 +1,9 @@
 
+Investigate the IdeIA server. What files are there? Why? What is the story behind them?
+What is running inside the server? Using which ports? Who is actually using it in a production environment?
+Is there a possibility to clean up the server? By removing .db files? How is a new DNS created? Who sets up the proxy?
+Why is the DNS using strange names?
+
 To agenda calculus test, science computer, 'til 02/05
 
 To agenda legislation test, science computer, 'til 02/05
@@ -9,6 +14,11 @@ How to implement AABB collision and collision resolution?
 What is the difference compared to Swept AABB and other 2D collisions?
 We have two rectangles, for each we must check for overlap on the X-Axis and the Y-Axis
     A.min < B.max && B.min < A.max
+
+
+
+
+
 
 CardCredenciamento, issue validating whether there is a customer at the same address. The query is wrong,
 you shouldn't use the neighborhood and street IDs as clauses, because they are unique for each address.
