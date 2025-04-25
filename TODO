@@ -1,12 +1,21 @@
 
+Create a directory "/workspace/devops/" on hostinger server
+Deploy gitea with docker compose on hostinger server
+Test and Rehearse docker volumes backups
+Search and investigate the reasons of why volumes is better than absolute path
+Get all source code inside the server and migrate them to gitea
+Deploy jenkins manager and jenkins agent on hosting server
+Create a new subdomain for gitea, jenkins and dozzle
+Configure the nginx proxy of gitea, jenkins and dozzle
+Deploy dozzle on hostinger server, and investigate how use a authenticated user
+
+Problem,  when restore the container volume, it's creating a "/from/from" directory instead of "/from",
+the question is why? and how to solve this behaviour?
+
 Investigate the IdeIA server. What files are there? Why? What is the story behind them?
 What is running inside the server? Using which ports? Who is actually using it in a production environment?
 Is there a possibility to clean up the server? By removing .db files? How is a new DNS created? Who sets up the proxy?
 Why is the DNS using strange names?
-
-To agenda calculus test, science computer, 'til 02/05
-
-To agenda legislation test, science computer, 'til 02/05
 
 Deploy and explore a localhost gitea solution, create a docker compose, and know how to backup and recover volumes
 
