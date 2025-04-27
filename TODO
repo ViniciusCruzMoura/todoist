@@ -1,21 +1,58 @@
 
-Create a directory "/workspace/devops/" on hostinger server
-Deploy gitea with docker compose on hostinger server
-Test and Rehearse docker volumes backups
-Search and investigate the reasons of why volumes is better than absolute path
+Problem, how to share a directory with the host without networking in QEMU?
+perhaps using filemanager solve the problem
+
+Problem, how to read the USB or others devices inside the QEMU?
+
+Uninter programação estruturada apol 1
+
+Research QEMU and noVNC to make a Windows server portable and easy to reproduce as a docker container
+
+Redeploy Jenkins agent and manager but with current network 'srv_default' so I need to recreate everything and configure from scratch
+
 Get all source code inside the server and migrate them to gitea
-Deploy jenkins manager and jenkins agent on hosting server
-Create a new subdomain for gitea, jenkins and dozzle
-Configure the nginx proxy of gitea, jenkins and dozzle
+
 Deploy dozzle on hostinger server, and investigate how use a authenticated user
 
-Problem,  when restore the container volume, it's creating a "/from/from" directory instead of "/from",
-the question is why? and how to solve this behaviour?
+Problem, why does the dozzle agent not work inside a cloudflare dns proxy? Is it a config issue?
+
+Invetigate the UrBackup solution and alternatives
+
+Problem, how to make a backup server? backup the git, database, and docker volumes
+
+Investigate a better solution for authenticated users in Dozzle or find another way for only internal users to access public DNS
+
+Think, is it a good idea to use an obscure subdomain? And if I need to change it in the future, will it be difficult?
+
+Investigate the GLPI, how to config and how integrate with email and git?
 
 Investigate the IdeIA server. What files are there? Why? What is the story behind them?
 What is running inside the server? Using which ports? Who is actually using it in a production environment?
 Is there a possibility to clean up the server? By removing .db files? How is a new DNS created? Who sets up the proxy?
 Why is the DNS using strange names?
+
+To help with development, I need to solve the source code management problem, as the code is only on the local development machine
+and deployment is done manually.
+
+===
+Solved and Done! i discovered new problems!
+===
+Create a directory "/home/infra/workspace/docker/" on hostinger server
+Deploy gitea with docker compose on hostinger server
+Test and Rehearse docker volumes backups
+Search and investigate the reasons of why volumes is better than absolute path
+Deploy jenkins manager and jenkins agent on hosting server
+Create a new subdomain for gitea, jenkins and dozzle
+Configure the nginx proxy of gitea, jenkins and dozzle
+===
+
+===
+Solved!
+===
+Problem, when restore the container volume, it's creating a "/from/from" directory instead of "/from",
+the question is why? and how to solve this behaviour?
+Solution, you need to go to the directory to get the files only, otherwise it will get the folder
+===
 
 Deploy and explore a localhost gitea solution, create a docker compose, and know how to backup and recover volumes
 
@@ -23,6 +60,24 @@ How to implement AABB collision and collision resolution?
 What is the difference compared to Swept AABB and other 2D collisions?
 We have two rectangles, for each we must check for overlap on the X-Axis and the Y-Axis
     A.min < B.max && B.min < A.max
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 On the cardterminais, remove the email "vinicius.moura@cardway.com.br".
     grep -n "vinicius.moura@cardway.com.br" apps/terminal_android/views/remessa.py
