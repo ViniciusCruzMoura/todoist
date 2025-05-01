@@ -1,109 +1,94 @@
 
-Problem, how to share a directory with the host without networking in QEMU?
-perhaps using filemanager solve the problem
+2025-05-01, create a new django project with all templates from ecd_analytics
 
-Problem, how to read the USB or others devices inside the QEMU?
+======
+Problems that need to be solved now
+======
 
-Uninter programação estruturada apol 1
+2025-04-24, Redeploy Jenkins agent and manager but with current network 'srv_default' so I need to recreate everything and configure from scratch
 
-Research QEMU and noVNC to make a Windows server portable and easy to reproduce as a docker container
+2025-04-22, To help with development, I need to solve the source code management problem, as the code is only on the local development machine
+and deployment is done manually.
+2025-04-29, we started using our own personal GitHub account to develop the application, on a private repository
+and i am studying a way to deploy an embedded application on windows
 
-Redeploy Jenkins agent and manager but with current network 'srv_default' so I need to recreate everything and configure from scratch
+======
+Problems that can be solved later
+======
 
-Get all source code inside the server and migrate them to gitea
+2025-04-23, Investigate the GLPI, how to config and how integrate with email and git?
 
-Deploy dozzle on hostinger server, and investigate how use a authenticated user
-
-Problem, why does the dozzle agent not work inside a cloudflare dns proxy? Is it a config issue?
-
-Invetigate the UrBackup solution and alternatives
-
-Problem, how to make a backup server? backup the git, database, and docker volumes
-
-Investigate a better solution for authenticated users in Dozzle or find another way for only internal users to access public DNS
-
-Think, is it a good idea to use an obscure subdomain? And if I need to change it in the future, will it be difficult?
-
-Investigate the GLPI, how to config and how integrate with email and git?
-
-Investigate the IdeIA server. What files are there? Why? What is the story behind them?
+2025-04-22, Investigate the IdeIA server. What files are there? Why? What is the story behind them?
 What is running inside the server? Using which ports? Who is actually using it in a production environment?
 Is there a possibility to clean up the server? By removing .db files? How is a new DNS created? Who sets up the proxy?
 Why is the DNS using strange names?
 
-To help with development, I need to solve the source code management problem, as the code is only on the local development machine
-and deployment is done manually.
+======
+Problems that are good to solve if time permits
+======
 
-===
-Solved and Done! i discovered new problems!
-===
-Create a directory "/home/infra/workspace/docker/" on hostinger server
-Deploy gitea with docker compose on hostinger server
-Test and Rehearse docker volumes backups
-Search and investigate the reasons of why volumes is better than absolute path
-Deploy jenkins manager and jenkins agent on hosting server
-Create a new subdomain for gitea, jenkins and dozzle
-Configure the nginx proxy of gitea, jenkins and dozzle
-===
+2025-04-29, how to bundle a python project
 
-===
-Solved!
-===
-Problem, when restore the container volume, it's creating a "/from/from" directory instead of "/from",
-the question is why? and how to solve this behaviour?
-Solution, you need to go to the directory to get the files only, otherwise it will get the folder
-===
+2025-04-28, get a acto gitlab user and email
 
-Deploy and explore a localhost gitea solution, create a docker compose, and know how to backup and recover volumes
+2025-04-28, Stop using filebrowser via IP and Port, and use it with cloudflare DNS and nginx proxy, because it is more secure
 
-How to implement AABB collision and collision resolution?
-What is the difference compared to Swept AABB and other 2D collisions?
-We have two rectangles, for each we must check for overlap on the X-Axis and the Y-Axis
+2025-04-27, Problem, why does the dozzle agent not work inside a cloudflare proxy DNS? Is it a config issue?
+, how to make this work?
+
+2025-03-01, Personal stuff, How to implement AABB collision and collision resolution?
+2025-03-02, What is the difference compared to Swept AABB and other 2D collisions?
+2025-03-03, We have two rectangles, for each we must check for overlap on the X-Axis and the Y-Axis
     A.min < B.max && B.min < A.max
 
+2025-04-28, Install proxmox on a QEMU VM and explore the tools to create a datacenter
 
+2025-04-26, Problem, how to share a directory with the host without networking in QEMU?
+perhaps using filebrowser solve the problem
+2025-04-29, I tried using the 'mount' command but got no results, so I just deployed a ssh server
+on the QEMU guest machine and accessed it with Filezilla and that worked great. all hail OpenSSH!
 
+2025-04-26, Problem, how to read the USB or others devices inside the QEMU?
 
+2025-04-25, Research QEMU and noVNC to make a Windows server portable and easy to reproduce as a docker container
 
+2025-04-24, Get all source code inside the server and migrate them to gitea
 
+2025-04-24, Invetigate the UrBackup solution and alternatives
 
+2025-04-24, Problem, how to make a backup server? backup the git, database, and docker volumes
 
+2025-04-23, Think, is it a good idea to use an obscure subdomain? And if I need to change it in the future, will it be difficult?
 
+=====
+Problems solved
+====
 
+2025-04-27, Personal stuff, How to migrate the card source code to my personal github and archived it?
 
+2025-04-25, Investigate a better solution for authenticated users in Dozzle or find another way for only internal users to access public DNS
+2025-04-26, i abandoned the idea, if you want to use dozzle, it is better to use it on a local network or with a VPN, otherwise use portainer
 
+2025-04-26, How to use WinSW to automatically start a service at windows startup?
+2025-04-26, answered!, you need to get the .exe and .xml from the github repository,
+configure the xml and run hte .exe with CMD
 
+2025-04-25, Deploy dozzle on hostinger server, and investigate how use a authenticated user
+2025-04-25, Solved!, to create an authentication user you need to use the 'generate' command which creates a users.yml file and maps that file into compose volumes
 
+2025-04-24, Create a directory "/home/infra/workspace/docker/" on hostinger server
+, Deploy gitea with docker compose on hostinger server
+, Test and Rehearse docker volumes backups
+, Search and investigate the reasons of why volumes is better than absolute path
+, Deploy jenkins manager and jenkins agent on hosting server
+, Create a new subdomain for gitea, jenkins and dozzle
+, Configure the nginx proxy of gitea, jenkins and dozzle
+2025-04-25, Solved and done! i discovered new issues! for some reason the dozzle agent doesn't work with DNS proxy
 
+2025-04-24, Problem, when restore the container volume, it's creating a "/from/from" directory instead of "/from",
+the question is why? and how to solve this behaviour?
+2025-04-24, Solved!, you need to go to the directory to get the files only, otherwise it will get the folder
 
-
-
-
-On the cardterminais, remove the email "vinicius.moura@cardway.com.br".
-    grep -n "vinicius.moura@cardway.com.br" apps/terminal_android/views/remessa.py
-
-On the cardterminais, extract the send email logic from view. Run the
-following command to find where need change.
-    grep -n "enviar_comprovante_de_aceite_via_email(.*" apps/terminal_android/views/remessa.py
-Refactor these implementations.
-
-On the cardcredenciamento, avoid nested ifs of 'estabelecimentos_info' variable. Run the 
-following command to get the list of functions.
-    grep -rn --include=*.py "def buscar_cliente_id(.*):"
-
-On the cardconnect, remove the environment variable not used in the 'docker-compose.yml'
-and 'settings.py'. Run the following command to get the list of environment variable.
-    echo "$PWD/core/settings.py:"
-    for line in $(cat .env.example); do
-        grep -n "${line//=/\',}" core/settings.py
-    done
-    echo "$PWD/docker-compose.yml:"
-    for line in $(cat .env.example); do
-         grep -n "${line//=/}" docker-compose.yml
-    done
-Then delete the unused variable and test the apis inside the docker container.
-    docker build --network=host -t $(basename $PWD) .
-    docker run -it --rm --network=host --env-file .env --name $(basename $PWD) \
-        -v "$PWD":/"$(basename $PWD)" -w /"$(basename $PWD)" $(basename $PWD) bash
-Fix these uses by change environment variable values.
+2025-04-24, Deploy and explore a localhost gitea solution, create a docker compose, and know how to backup and recover volumes
+2025-04-24, Done! i learned a lot about backing up Docker volumes
 
